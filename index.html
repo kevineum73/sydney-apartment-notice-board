@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sydney Apartment Market Notice Board</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1>Sydney Apartment Market</h1>
+                    <p class="lead">Your resource for 2026 market projections and community notices</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <button class="btn btn-light" id="login-btn">Login</button>
+                    <button class="btn btn-outline-light" id="register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#market-dashboard">Market Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#property-listings">Property Listings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#price-trends">Price Trends</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#notice-board">Notice Board</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <!-- Market Dashboard Section -->
+        <section id="market-dashboard" class="mb-5">
+            <h2 class="border-bottom pb-2 mb-4">2026 Market Dashboard</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Price Forecast</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-center">
+                                    <h4 class="text-success">+6.1%</h4>
+                                    <p>Projected Apartment Price Growth for 2026</p>
+                                </div>
+                                <div class="text-center">
+                                    <h4 class="text-success">+7.8%</h4>
+                                    <p>Projected House Price Growth for 2026</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Supply vs Demand</h3>
+                            <div class="text-center mb-3">
+                                <h4 class="text-danger">12,100 vs 30,000</h4>
+                                <p>New Apartment Completions vs Annual Demand</p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" style="width: 40%">40% Supply Met</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Rental Market</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="text-center">
+                                    <h4 class="text-warning">+25%</h4>
+                                    <p>Projected Rent Increase by 2029</p>
+                                </div>
+                                <div class="text-center">
+                                    <h4 class="text-warning">1.5%</h4>
+                                    <p>Projected Vacancy Rate by 2029</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title">Affordability Index</h3>
+                            <div class="text-center">
+                                <h4 class="text-danger">68%</h4>
+                                <p>Household Income Required for Mortgage</p>
+                            </div>
+                            <p class="small text-muted text-center">Sydney has the lowest housing affordability in Australia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price Trends Section -->
+        <section id="price-trends" class="mb-5">
+            <h2 class="border-bottom pb-2 mb-4">Price Trends</h2>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <canvas id="priceChart" height="300"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notice Board Section -->
+        <section id="notice-board" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-4">
+                <h2>Community Notice Board</h2>
+                <button class="btn btn-primary" id="post-notice-btn">Post Notice</button>
+            </div>
+            
+            <div class="row" id="notices-container">
+                <!-- Sample Notice 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between">
+                            <span>Posted by: Real Estate Advisor</span>
+                            <span>Apr 5, 2025</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Investor Information Session</h5>
+                            <p class="card-text">Join us for a free information session on the Sydney apartment market outlook for 2026. Learn about hotspots, investment strategies, and market projections.</p>
+                            <p class="card-text"><small>Location: Sydney Town Hall, 7PM, April 15</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sample Notice 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between">
+                            <span>Posted by: Market Analyst</span>
+                            <span>Apr 3, 2025</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">New Research Report Available</h5>
+                            <p class="card-text">Our comprehensive analysis of the Sydney apartment market forecast for 2026 is now available. The report includes suburb-by-suburb breakdown and investment recommendations.</p>
+                            <p class="card-text"><small>Download available for members</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="mb-5">
+            <h2 class="border-bottom pb-2 mb-4">Resources</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">First-Time Buyers Guide</h5>
+                            <p class="card-text">Step-by-step guide to purchasing your first apartment in Sydney with focus on the 2026 market conditions.</p>
+                            <a href="#" class="btn btn-outline-primary">Download Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Investment Calculator</h5>
+                            <p class="card-text">Calculate potential returns on Sydney apartment investments based on 2026 market projections.</p>
+                            <a href="#" class="btn btn-outline-primary">Use Calculator</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Suburb Analysis</h5>
+                            <p class="card-text">Detailed analysis of Sydney suburbs with the best apartment market growth potential through 2026.</p>
+                            <a href="#" class="btn btn-outline-primary">View Analysis</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Sydney Apartment Market Notice Board</h5>
+                    <p>Your resource for market information and community notices</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#market-dashboard" class="text-light">Market Dashboard</a></li>
+                        <li><a href="#notice-board" class="text-light">Notice Board</a></li>
+                        <li><a href="#resources" class="text-light">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li>Email: info@sydneyapartments.com</li>
+                        <li>Phone: (02) 1234 5678</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="small">© 2025 Sydney Apartment Market Notice Board. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
